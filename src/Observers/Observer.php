@@ -3,7 +3,8 @@ declare(strict_types=1);
 
 namespace Arctix\Core\Observers;
 
-use Arctix\Support\Facades\Hash;
+use Arctix\Support\Traits\HasPasswordTrait;
+use Arctix\Support\Traits\HasSlugTrait;
 
 /**
  * Observer
@@ -12,14 +13,6 @@ use Arctix\Support\Facades\Hash;
  */
 abstract class Observer
 {
-    /**
-     * @param string $password
-     *
-     * @return string
-     */
-    protected function makePassword(
-        string $password
-    ) : string {
-        return Hash::make($password);
-    }
+    use HasPasswordTrait,
+        HasSlugTrait;
 }
